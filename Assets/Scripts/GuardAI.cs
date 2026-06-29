@@ -142,7 +142,7 @@ public class GuardAI : MonoBehaviour
         {
             Debug.Log("Player in");
             Destroy(other.gameObject);
-            //GameManager.Instance?.Lose();
+            FindAnyObjectByType<GameSystem>().ActivateLoseMenu();
         }
     }
     void OnTriggerExit2D(Collider2D other)

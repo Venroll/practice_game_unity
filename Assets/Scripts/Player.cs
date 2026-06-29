@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,10 +22,29 @@ public class Player : MonoBehaviour
     {
         inputActions.Disable();
     }
-
     private void FixedUpdate()
     {
         Vector2 move = inputActions.Player.Move.ReadValue<Vector2>();
         rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coins"))
+        {
+            Destroy(other.gameObject);
+            FindAnyObjectByType<GameSystem>().AddCoin();
+        }
+        else if (other.CompareTag("LevelPortal"))
+        {
+            if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
+            {
+                FindAnyObjectByType<GameSystem>().ActivateLastWinMenu();
+            }
+            else
+            {
+                FindAnyObjectByType<GameSystem>().ActivateWinMenu();
+            }
+        }
     }
 }
