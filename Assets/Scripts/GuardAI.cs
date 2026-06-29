@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class GuardAI : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GuardAI : MonoBehaviour
     Transform player;
     float timer;
     int patrolIndex;
+    float starterChaseSpeed;
+    float starterPatrolSpeed;
     Vector2 moveDirection;
     Vector2 lastKnownPlayerPos;       
     bool reachedLastSeenPos;          
@@ -32,6 +35,8 @@ public class GuardAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         timer = suspicionTime;
         lastKnownPlayerPos = transform.position;
+        starterChaseSpeed = chaseSpeed;
+        starterPatrolSpeed = patrolSpeed;
 
         visionLine = GetComponent<LineRenderer>();
         if (visionLine == null)
@@ -115,9 +120,6 @@ public class GuardAI : MonoBehaviour
             Vector2 newPos = Vector2.MoveTowards(rb.position, playerPos, chaseSpeed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
             moveDirection = (playerPos - rb.position).normalized;
-
-            /*if (Vector2.Distance(rb.position, playerPos) <= catchDist)
-                GameManager.Instance?.Lose();*/
         }
 
         if (moveDirection != Vector2.zero)
@@ -127,6 +129,30 @@ public class GuardAI : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
         UpdateVisionCone();
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            Debug.Log("Obstacle in");
+            chaseSpeed = 1f;
+            patrolSpeed = 1f;
+        }
+        else if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player in");
+            Destroy(other.gameObject);
+            //GameManager.Instance?.Lose();
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            Debug.Log("Obstacle out");
+            chaseSpeed = starterChaseSpeed;
+            patrolSpeed = starterPatrolSpeed;
+        }
     }
 
     bool CanSeePlayer()
