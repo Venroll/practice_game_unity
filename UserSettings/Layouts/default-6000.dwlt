@@ -1097,9 +1097,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 1.8794968, y: 0.7729465, z: 6.002056}
+    m_Target: {x: -0.32607162, y: -0.63353896, z: 6.0043683}
     speed: 2
-    m_Value: {x: 1.8794968, y: 0.7729465, z: 6.002056}
+    m_Value: {x: -0.32607162, y: -0.63353896, z: 6.0043683}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1150,9 +1150,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.7101045
+    m_Target: 6.479066
     speed: 2
-    m_Value: 6.7101045
+    m_Value: 6.479066
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1334,7 +1334,8 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -2440
+      - m_Data: -80926
+      - m_Data: -4678
       - m_Data: -1382
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -1430,11 +1431,15 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 51858
+    - m_Data: 51794
     m_LastClickedID:
-      m_Data: 51858
+      m_Data: 51794
     m_ExpandedIDs:
     - m_Data: 0
+    - m_Data: 51596
+    - m_Data: 51598
+    - m_Data: 51600
+    - m_Data: 51602
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1468,6 +1473,10 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
+    - m_Data: 51596
+    - m_Data: 51598
+    - m_Data: 51600
+    - m_Data: 51602
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1496,9 +1505,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 784
+    - m_Data: 51428
     m_LastClickedEntityId:
-      m_Data: 784
+      m_Data: 51428
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 71990
