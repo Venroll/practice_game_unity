@@ -106,14 +106,12 @@ public class GameSystem : MonoBehaviour
     }
     public void NextLevel()
     {
+        DeactivatePause();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void RestartRun()
     {
-        Time.timeScale = 1f;
-        isPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        DeactivatePause();
         SceneManager.LoadScene(1);
     }
 }

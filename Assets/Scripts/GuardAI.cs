@@ -154,22 +154,22 @@ public class GuardAI : MonoBehaviour
     {
         if (player == null) return false;
         Vector2 dir = (player.position - transform.position).normalized;
-        if (Vector2.Distance(transform.position, player.position) > viewRadius) return false;
+        float dist = Vector2.Distance(transform.position, player.position);
+        if (dist > viewRadius) return false;
         if (Vector2.Angle(transform.right, dir) > viewAngle / 2f) return false;
-
-        float step = viewAngle / (raysCount - 1);
-        for (int i = 0; i < raysCount; i++)
+        int rays = 10;
+        float step = viewAngle / (rays - 1);
+        LayerMask combinedMask = obstacleMask | LayerMask.GetMask("Player");
+        for (int i = 0; i < rays; i++)
         {
             float angle = -viewAngle / 2f + step * i;
             Vector2 rayDir = Quaternion.Euler(0, 0, angle) * transform.right;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDir, viewRadius, obstacleMask);
-            if (hit.collider == null)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDir, viewRadius, combinedMask);
+
+            if (hit.collider != null)
             {
-                RaycastHit2D playerHit = Physics2D.Raycast(transform.position, rayDir, viewRadius, LayerMask.GetMask("Player"));
-                if (playerHit.collider != null && playerHit.collider.CompareTag("Player"))
-                {
+                if (hit.collider.CompareTag("Player"))
                     return true;
-                }
             }
         }
         return false;
