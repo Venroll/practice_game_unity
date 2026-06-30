@@ -1467,6 +1467,7 @@ MonoBehaviour:
   lastWinPanel: {fileID: 944413243}
   losePanel: {fileID: 138043950}
   CoinCountText: {fileID: 1298438578}
+  PauseCoinCountText: {fileID: 962998873}
 --- !u!114 &486176400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,6 +1480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1e528e6d604a4ca909df62c41be8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuScript
+  maxLvl: {fileID: 0}
+  maxCoins: {fileID: 0}
 --- !u!4 &495239320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3882824931661364068, guid: aeecaf1fa39314b48bae0eab53c74566, type: 3}

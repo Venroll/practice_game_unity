@@ -10,6 +10,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] GameObject lastWinPanel;
     [SerializeField] GameObject losePanel;
     [SerializeField] TextMeshProUGUI CoinCountText;
+    [SerializeField] TextMeshProUGUI PauseCoinCountText;
     private int CoinCount = 0;
     private int totalCoins;
     private int maxLvl;
@@ -24,6 +25,7 @@ public class GameSystem : MonoBehaviour
         maxLvl = PlayerPrefs.GetInt("MaxLvl", 0);
         maxCoins = PlayerPrefs.GetInt("MaxCoins", 0);
         localMaxCoins = PlayerPrefs.GetInt("LocalMaxCoins", 0);
+        PauseCoinCountText.text = $"TOTAL COINS\n{localMaxCoins}";
     }
 
     void Update()
@@ -85,16 +87,14 @@ public class GameSystem : MonoBehaviour
         {
             PlayerPrefs.SetInt("MaxCoins", localMaxCoins);
         }
-        localMaxCoins = 0;
-        PlayerPrefs.SetInt("LocalMaxCoins", localMaxCoins);
+        PlayerPrefs.SetInt("LocalMaxCoins", 0);
         PlayerPrefs.Save();
         lastWinPanel.SetActive(true);
         ActivatePause();
     }
     public void ActivateLoseMenu()
     {
-        localMaxCoins = 0;
-        PlayerPrefs.SetInt("LocalMaxCoins", localMaxCoins);
+        PlayerPrefs.SetInt("LocalMaxCoins", 0);
         losePanel.SetActive(true);
         ActivatePause();
     }

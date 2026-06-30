@@ -8,11 +8,13 @@ public class MenuScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI maxCoins;
     private void Start()
     {
-        maxLvl.text = $"MaxLvl:{PlayerPrefs.GetInt("MaxLvl", 0)}";
-        maxCoins.text = $"MaxCoins:{PlayerPrefs.GetInt("MaxCoins", 0)}";
+        maxLvl.text = $"MaxLvl: {PlayerPrefs.GetInt("MaxLvl", 0)}";
+        maxCoins.text = $"MaxCoins: {PlayerPrefs.GetInt("MaxCoins", 0)}";
     }
     public void BackToMenu()
     {
+        PlayerPrefs.SetInt("LocalMaxCoins", 0);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(0);
     }
 
@@ -26,5 +28,10 @@ public class MenuScript : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void ResetStats()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 }
