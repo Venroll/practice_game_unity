@@ -9,7 +9,7 @@ public class MenuScript : MonoBehaviour
     private void Start()
     {
         maxLvl.text = $"MaxLvl:{PlayerPrefs.GetInt("MaxLvl", 0)}";
-        maxCoins.text = $"MaxCoins:{PlayerPrefs.GetInt("MaxCoins", 0)}"
+        maxCoins.text = $"MaxCoins:{PlayerPrefs.GetInt("MaxCoins", 0)}";
     }
     public void BackToMenu()
     {
