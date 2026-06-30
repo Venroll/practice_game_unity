@@ -1,8 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI maxLvl;
+    [SerializeField] TextMeshProUGUI maxCoins;
+    private void Start()
+    {
+        maxLvl.text = $"MaxLvl:{PlayerPrefs.GetInt("MaxLvl", 0)}";
+        maxCoins.text = $"MaxCoins:{PlayerPrefs.GetInt("MaxCoins", 0)}"
+    }
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);

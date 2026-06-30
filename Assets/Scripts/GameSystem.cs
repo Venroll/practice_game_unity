@@ -110,6 +110,10 @@ public class GameSystem : MonoBehaviour
     }
     public void RestartRun()
     {
+        Time.timeScale = 1f;
+        isPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene(1);
     }
 }

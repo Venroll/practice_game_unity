@@ -14,7 +14,6 @@ public class GuardAI : MonoBehaviour
     [SerializeField] float suspicionTime = 3f;
     [SerializeField] float suspicionSpeed = 1.5f;   
     [SerializeField] float chaseSpeed = 3.5f;
-    [SerializeField] float catchDist = 0.6f;
     [SerializeField] float turnSpeed = 180f; 
 
     Rigidbody2D rb;
@@ -134,14 +133,11 @@ public class GuardAI : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Debug.Log("Obstacle in");
             chaseSpeed = 1f;
             patrolSpeed = 1f;
         }
         else if (other.CompareTag("Player"))
         {
-            Debug.Log("Player in");
-            Destroy(other.gameObject);
             FindAnyObjectByType<GameSystem>().ActivateLoseMenu();
         }
     }
@@ -149,7 +145,6 @@ public class GuardAI : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Debug.Log("Obstacle out");
             chaseSpeed = starterChaseSpeed;
             patrolSpeed = starterPatrolSpeed;
         }
