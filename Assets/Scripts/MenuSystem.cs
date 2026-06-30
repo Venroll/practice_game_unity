@@ -33,5 +33,7 @@ public class MenuScript : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
+        maxLvl.text = $"MaxLvl: {PlayerPrefs.GetInt("MaxLvl", 0)}";
+        maxCoins.text = $"MaxCoins: {PlayerPrefs.GetInt("MaxCoins", 0)}";
     }
 }
